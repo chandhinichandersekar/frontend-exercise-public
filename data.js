@@ -4,7 +4,6 @@ export function getResults({query, numOfResults, dataSource, mapResults}) {
         $.ajax({
             url: Url,
             type: "GET",
-            async: false,
             success:  result => {
               resolve(mapResults(result));
             },
