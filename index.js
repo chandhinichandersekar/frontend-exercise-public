@@ -36,20 +36,4 @@ new Autocomplete(document.getElementById('gh-user'), {
 });
 
 
-function getMBTANames(results) {
-  return results.data.map(({attributes, id}) => {
-    return {
-        text: attributes.name,
-        value: id
-    };
-  });
-}
-// MBTA Users
-new Autocomplete(document.getElementById('mbta-name'), {
-  onSelect: (mbtaId) => {
-    console.log('selected MBTA id:', mbtaId);
-  },
-  data: 'https://api-v3.mbta.com/stops',
-  mapResults: getMBTANames
-});
 
