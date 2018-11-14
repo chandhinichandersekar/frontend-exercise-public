@@ -12,7 +12,8 @@ new Autocomplete(document.getElementById('state'), {
   data,
   onSelect: (stateCode) => {
     console.log('selected state:', stateCode);
-  }
+  },
+  mapResults: data
 });
 
 
@@ -24,6 +25,7 @@ function getUserNames(results) {
     };
   });
 }
+
 // Github Users
 new Autocomplete(document.getElementById('gh-user'), {
   onSelect: (ghUserId) => {
@@ -32,3 +34,22 @@ new Autocomplete(document.getElementById('gh-user'), {
   data: 'https://api.github.com/search/users',
   mapResults: getUserNames
 });
+
+
+function getMBTANames(results) {
+  return results.data.map(({attributes, id}) => {
+    return {
+        text: attributes.name,
+        value: id
+    };
+  });
+}
+// MBTA Users
+new Autocomplete(document.getElementById('mbta-name'), {
+  onSelect: (mbtaId) => {
+    console.log('selected MBTA id:', mbtaId);
+  },
+  data: 'https://api-v3.mbta.com/stops',
+  mapResults: getMBTANames
+});
+

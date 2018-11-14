@@ -1,11 +1,11 @@
-export default function keyEvents({id, onSelectEnter}) {
+export default function keyEvents({id, onSelectEnter, onSelectEnterForDataArray }) {
     const selectorId = `#${id}`;
+    
     $(selectorId).keydown(function (e) {
         var $listItem = $(`${selectorId} li`);
         var key = e.keyCode,
             $selected = $listItem.filter('.selected'),
             $current;
-
         if (key != 40 && key != 38 && key != 13) return;
 
         if (key === 40) // Down key
@@ -32,8 +32,8 @@ export default function keyEvents({id, onSelectEnter}) {
         }
         else if (key == 13) {
             if (typeof onSelectEnter === 'function') onSelectEnter($selected[0].value);
+            else if (typeof onSelectEnterForDataArray === 'function') onSelectEnterForDataArray($selected[0].attributes.value.value);
         }
-
 
     });
 }

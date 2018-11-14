@@ -58,12 +58,11 @@ export default class Autocomplete {
     const fragment = document.createDocumentFragment();
     results.forEach(({ text, value }) => {
       const el = document.createElement('li');
+      el.setAttribute("value", value);
       Object.assign(el, {
         className: 'result',
-        textContent: text,
-        value: value
+        textContent: text
       });
-
       // Pass the value to the onSelect callback
       var focus;
       el.addEventListener('click', () => {
@@ -101,6 +100,6 @@ export default class Autocomplete {
     Object.assign(this.listEl, { className: 'results' });
     this.rootEl.appendChild(this.listEl);
 
-    keyEvents({id, onSelectEnter: this.options.onSelect});
+    keyEvents({id, onSelectEnterForAPICalls: this.options.onSelect, onSelectEnterForDataArray: this.options.onSelect });
   }
 }
