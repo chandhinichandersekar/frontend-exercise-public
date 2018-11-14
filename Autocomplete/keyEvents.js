@@ -1,4 +1,4 @@
-export default function keyEvents({id, onSelectEnter, onSelectEnterForDataArray }) {
+export default function keyEvents({id, onSelectEnter}) {
     const selectorId = `#${id}`;
     
     $(selectorId).keydown(function (e) {
@@ -31,8 +31,8 @@ export default function keyEvents({id, onSelectEnter, onSelectEnterForDataArray 
             $current.addClass('selected');
         }
         else if (key == 13) {
-            if (typeof onSelectEnter === 'function') onSelectEnter($selected[0].value);
-            else if (typeof onSelectEnterForDataArray === 'function') onSelectEnterForDataArray($selected[0].attributes.value.value);
+            if (typeof onSelectEnter === 'function') onSelectEnter($selected[0].id);
+           // else if (typeof onSelectEnterForDataArray === 'function') onSelectEnterForDataArray($selected[0].attributes.value.value);
         }
 
     });

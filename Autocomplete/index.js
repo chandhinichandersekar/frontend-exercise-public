@@ -58,7 +58,7 @@ export default class Autocomplete {
     const fragment = document.createDocumentFragment();
     results.forEach(({ text, value }) => {
       const el = document.createElement('li');
-      el.setAttribute("value", value);
+      el.setAttribute('id', value);
       Object.assign(el, {
         className: 'result',
         textContent: text
@@ -100,6 +100,6 @@ export default class Autocomplete {
     Object.assign(this.listEl, { className: 'results' });
     this.rootEl.appendChild(this.listEl);
 
-    keyEvents({id, onSelectEnterForAPICalls: this.options.onSelect, onSelectEnterForDataArray: this.options.onSelect });
+    keyEvents({id, onSelectEnter: this.options.onSelect});
   }
 }
